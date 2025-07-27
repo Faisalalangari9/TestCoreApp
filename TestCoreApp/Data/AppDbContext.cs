@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
 //using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using TestCoreApp.Areas.Employees.Models;
@@ -6,7 +8,7 @@ using TestCoreApp.Models;
 
 namespace TestCoreApp.Data
 {
-   public class AppDbContext : DbContext
+   public class AppDbContext : IdentityDbContext<IdentityUser>
     {           //Contructor 1- DbContextsOptions is a generic which contain our class 2- options will be sent to DbContext constructor 
 
         public AppDbContext(DbContextOptions<AppDbContext> options): base(options) { //we need to define item class datatypes 
@@ -18,7 +20,7 @@ namespace TestCoreApp.Data
         public DbSet<Employees> Employees { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-           // base.OnModelCreating(modelBuilder);  
+            base.OnModelCreating(modelBuilder);  
 
             modelBuilder.Entity<Category>().HasData(
                  new Category() {Id = 1, Name = "Electric Machine" },
