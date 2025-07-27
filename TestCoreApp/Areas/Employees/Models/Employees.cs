@@ -1,5 +1,5 @@
 ﻿namespace TestCoreApp.Areas.Employees.Models
-{
+{ //Employee Model 
     public class Employees
     {
         public int Id { get; set; }
