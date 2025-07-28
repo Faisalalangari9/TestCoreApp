@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TestCoreApp.Data;
 using TestCoreApp.Models;
 
 namespace TestCoreApp.Controllers
 {
+    [Authorize]
     public class ItemsController : Controller //Page of the items 
     {
+        
         private readonly AppDbContext _db;
         public ItemsController(AppDbContext db) //retrive data from server to program we Created a constructor and passed parameters AppDbContext db
         {

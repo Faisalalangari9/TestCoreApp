@@ -118,6 +118,7 @@ namespace TestCoreApp.Areas.Identity.Pages.Account
             {
                 var user = CreateUser();
                 user.PhoneNumber = Input.PhoneNumber;
+                user.EmailConfirmed = true; //For testing only 
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
